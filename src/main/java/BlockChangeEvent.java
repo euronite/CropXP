@@ -11,12 +11,14 @@ import org.bukkit.event.Listener;
 import java.util.ArrayList;
 
 
-public class BlockBreak implements Listener {
+public class BlockChangeEvent implements Listener {
     FileConfiguration config;
     ArrayList<Material> materials = new ArrayList<>();
+    int xpAmount;
 
-    public BlockBreak(FileConfiguration config) {
+    public BlockChangeEvent(FileConfiguration config) {
         this.config = config;
+        xpAmount = config.getInt("xpAmount");
         for (String material: config.getStringList("xpCrops")) {
             if (material != null){
                 materials.add(Material.getMaterial(material));
@@ -30,7 +32,7 @@ public class BlockBreak implements Listener {
         Material material = block.getType();
         if (materials.contains(material)){
             ExperienceOrb orb = block.getWorld().spawn(block.getLocation().add(0.5, 0.5, 0.5), ExperienceOrb.class);
-            orb.setExperience(10);
+            orb.setExperience(xpAmount);
         }
     }
 

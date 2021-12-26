@@ -11,9 +11,10 @@ public class Application extends JavaPlugin {
     public void onEnable(){
         ArrayList<String> xpCropList = new ArrayList<>(Arrays.asList("PUMPKIN", "MELON"));
         config.addDefault("xpCrops", xpCropList);
+        config.addDefault("xpAmount", 15);
         config.options().copyDefaults(true);
         saveConfig();
-        this.getServer().getPluginManager().registerEvents(new BlockBreak(config), this);
+        this.getServer().getPluginManager().registerEvents(new BlockChangeEvent(config), this);
     }
 
     @Override
