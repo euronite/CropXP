@@ -1,12 +1,11 @@
-import com.palmergames.bukkit.towny.event.actions.TownyBuildEvent;
-import com.palmergames.bukkit.towny.event.actions.TownyDestroyEvent;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.ExperienceOrb;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
 
 import java.util.ArrayList;
 
@@ -26,24 +25,22 @@ public class BlockChangeEvent implements Listener {
         }
     }
 
-    @EventHandler (ignoreCancelled = true, priority = EventPriority.HIGHEST)
-    public void blockBreak(TownyDestroyEvent event){
+    @EventHandler (priority = EventPriority.LOWEST)
+    public void blockBreak(BlockBreakEvent event){
         Block block = event.getBlock();
         Material material = block.getType();
         if (materials.contains(material)){
-            ExperienceOrb orb = block.getWorld().spawn(block.getLocation().add(0.5, 0.5, 0.5), ExperienceOrb.class);
-            orb.setExperience(xpAmount);
+            event.setExpToDrop(xpAmount);
         }
     }
 
-    @EventHandler (ignoreCancelled = true, priority = EventPriority.HIGHEST)
-    public void blockPlace(TownyBuildEvent event){
+    @EventHandler
+    public void blockPlace(BlockPlaceEvent event){
         Block block = event.getBlock();
         Material material = block.getType();
         if (materials.contains(material)){
-            event.getPlayer().sendMessage("Cannot place this block");
+            event.getPlayer().sendMessage("You aren't allowed to place this block!");
             event.setCancelled(true);
-
         }
     }
 }
