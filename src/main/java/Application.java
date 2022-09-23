@@ -16,8 +16,4 @@ public class Application extends JavaPlugin {
         saveConfig();
         this.getServer().getPluginManager().registerEvents(new BlockChangeEvent(config), this);
     }
-
-    @Override
-    public void onDisable(){}
-
 }

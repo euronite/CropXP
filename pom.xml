@@ -14,10 +14,6 @@
     </properties>
     <repositories>
         <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
-        <repository>
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
@@ -28,13 +24,6 @@
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
             <version>1.17.1-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-
-        </dependency>
-        <dependency>
-            <groupId>com.github.TownyAdvanced</groupId>
-            <artifactId>towny</artifactId>
-            <version>0.97.5.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
