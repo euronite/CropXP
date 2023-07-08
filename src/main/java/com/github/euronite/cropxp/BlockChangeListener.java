@@ -51,7 +51,7 @@ public class BlockChangeListener implements Listener {
             if (material == Material.MELON || material == Material.PUMPKIN) {
                 for (BlockFace direction : blockFaces) {
                     Block adjacent = block.getRelative(direction);
-                    if ((adjacent.getType() == Material.ATTACHED_MELON_STEM && materials.contains(Material.MELON)) || (adjacent.getType() == Material.ATTACHED_PUMPKIN_STEM && materials.contains(Material.PUMPKIN))) {
+                    if (adjacent.getType() == Material.ATTACHED_MELON_STEM || adjacent.getType() == Material.ATTACHED_PUMPKIN_STEM) {
                         Directional stemDirection = (Directional) adjacent.getBlockData();
                         if (stemDirection.getFacing() == direction.getOppositeFace()) {
                             event.setExpToDrop(xpAmount);
@@ -65,7 +65,7 @@ public class BlockChangeListener implements Listener {
                     event.setExpToDrop(xpAmount);
                 }
             }
-        } else if (material == Material.ATTACHED_MELON_STEM || material == Material.ATTACHED_PUMPKIN_STEM) {
+        } else if ((material == Material.ATTACHED_MELON_STEM && materials.contains(Material.MELON)) || (material == Material.ATTACHED_PUMPKIN_STEM && materials.contains(Material.PUMPKIN))) {
             event.setExpToDrop(xpAmount);
         }
     }
