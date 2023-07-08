@@ -1,5 +1,5 @@
 # CropXP Plugin - Get From Blocks In Any Server
-Minecraft plugin for getting exp from crops. Small side project
+Minecraft plugin for getting exp from crops. Compatible with Towny
 ### Config File
 - once the plugin is run for the first time, a config file is created in CropXP folder under plugins. By default all crops are included and default xp value is 15.
 - This specifies blocks that give xp. This can be edited. Note this has to follow the standard naming conventions for crops.
