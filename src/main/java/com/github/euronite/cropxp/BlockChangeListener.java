@@ -51,7 +51,7 @@ public class BlockChangeListener implements Listener {
             if (material == Material.MELON || material == Material.PUMPKIN) {
                 for (BlockFace direction : blockFaces) {
                     Block adjacent = block.getRelative(direction);
-                    if (adjacent.getType() == Material.ATTACHED_MELON_STEM || adjacent.getType() == Material.ATTACHED_PUMPKIN_STEM) {
+                    if ((adjacent.getType() == Material.ATTACHED_MELON_STEM && materials.contains(Material.MELON)) || (adjacent.getType() == Material.ATTACHED_PUMPKIN_STEM && materials.contains(Material.PUMPKIN))) {
                         Directional stemDirection = (Directional) adjacent.getBlockData();
                         if (stemDirection.getFacing() == direction.getOppositeFace()) {
                             event.setExpToDrop(xpAmount);
