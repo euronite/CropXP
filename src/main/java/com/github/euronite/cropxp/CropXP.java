@@ -1,10 +1,12 @@
+package com.github.euronite.cropxp;
+
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Application extends JavaPlugin {
+public class CropXP extends JavaPlugin {
     FileConfiguration config = getConfig();
 
     @Override
@@ -14,6 +16,6 @@ public class Application extends JavaPlugin {
         config.addDefault("xpAmount", 15);
         config.options().copyDefaults(true);
         saveConfig();
-        this.getServer().getPluginManager().registerEvents(new BlockChangeEvent(config), this);
+        this.getServer().getPluginManager().registerEvents(new BlockChangeListener(config, this), this);
     }
 }
