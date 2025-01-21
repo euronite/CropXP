@@ -10,7 +10,7 @@ public class CropXP extends JavaPlugin {
     FileConfiguration config = getConfig();
 
     @Override
-    public void onEnable(){
+    public void onEnable() {
         ArrayList<String> xpCropList = new ArrayList<>(Arrays.asList("PUMPKIN", "MELON", "POTATOES", "CARROTS", "COCOA", "BEETROOTS", "WHEAT", "NETHER_WART"));
         config.addDefault("xpCrops", xpCropList);
         config.addDefault("xpAmount", 15);
